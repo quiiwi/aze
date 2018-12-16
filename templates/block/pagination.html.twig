@@ -1,0 +1,26 @@
+<span>
+    <span>
+        {% if (app.request.get('page') + 1) * entities.max < entities.total %}
+            <a href="{{ path(name ~ '_index') }}{% if stringResponse != '' %}{{ stringResponse }}&page={{ app.request.get('page') + 1 }}{% else %}?page={{ app.request.get('page') + 1 }}{% endif %}">
+                <i class="pe-7s-right-arrow pull-right arrow-right-active"></i>
+            </a>
+        {% else %}
+            <i class="pe-7s-right-arrow pull-right arrow-right-inactive"></i>
+        {% endif %}
+    </span>
+
+    {% if app.request.get('page') >= 1 %}
+        <a href="{{ path(name ~ '_index') }}{% if stringResponse != '' %}{{ stringResponse }}&page={{ app.request.get('page') - 1 }}{% else %}?page={{ app.request.get('page') - 1 }}{% endif %}">
+            <i class="pe-7s-left-arrow pull-right arrow-left-active"></i>
+        </a>
+    {% else %}
+        <span>
+            <i style="" class="pe-7s-left-arrow pull-right arrow-left-inactive"></i>
+        </span>
+    {% endif %}
+    <span class="pull-right info-pagination">
+        <span>
+            {{ entities.current }} sur {{ entities.total }}
+        </span>
+    </span>
+</span> 

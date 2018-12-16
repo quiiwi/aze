@@ -1,0 +1,100 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Hello!{% endblock %}
+
+{% block body %}
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+    <div class="main-panel">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                	<div class="col-md-6">
+					<canvas id="myChart"></canvas>
+
+					<script type="text/javascript">
+						var ctx = document.getElementById('myChart').getContext('2d');
+						var chart = new Chart(ctx, {
+						    // The type of chart we want to create
+						    type: 'horizontalBar',
+
+						    // The data for our dataset
+						    data: {
+						        labels: ["Tous", "Accepté", "Refusé", "Nouvelle"],
+						        datasets: [{
+						            label: "Candidature",
+						            backgroundColor: 'rgb(255, 99, 132)',
+						            borderColor: 'rgb(255, 99, 132)',
+						            data: [{{ countCandidacy }}, {{ countCandidacyAccept }},
+					            		{{ countCandidacyRefused }}, {{ countCandidacyNew }}],
+						        }]
+						    },
+						    // Configuration options go here
+						    options: {
+						        title: {
+						            display: false
+						        },
+						        scales: {
+						            xAxes: [{
+						            	ticks: {
+							                beginAtZero: true,
+						            	}
+						            }]
+						        }
+						    }
+						});
+					</script>	
+                	</div>
+                	<div class="col-md-6" width="100%">
+						<canvas id="pie-chart"></canvas>
+                		<script type="text/javascript">
+							new Chart(document.getElementById("pie-chart"), {
+							    type: 'bar',
+							    data: {
+							      labels: ["Africa", "Asia", "Europe", "Latin America", "North America"],
+							      datasets: [
+							        {
+							          label: "",
+							          backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+							          data: [2478,5267,734,784,433]
+							        }
+							      ]
+							    },
+							    options: {
+							      legend: { display: false },
+							      title: {
+							        display: true,
+							        text: 'Predicted world population (millions) in 2050'
+							      }
+							    }
+							});
+
+                		</script>
+                	</div>
+                </div>
+                <div class="row">
+                	<div class="col-md-12">
+                	<canvas id="line-chart"></canvas>
+                	<script type="text/javascript">
+                		new Chart(document.getElementById("line-chart"), {
+						  type: 'line',
+						  data: {
+						    labels: ["Janvier","Février","Mars", "Avril", "Mai", "Juin", "Juillet", "Aout"],
+						    datasets: [{ 
+						        data: [86,114,25,106,54,12,152,6],
+						        label: "Nombre d'établissement",
+						        borderColor: "#3e95cd",
+						      }
+						    ]
+						  },
+						  options: {
+						  }
+						});
+                	</script>
+                	</div>
+                </div>
+            </div>
+        </div>
+	</div>
+{% endblock %}

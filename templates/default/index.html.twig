@@ -1,0 +1,339 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <style type="text/css">
+        body::before {
+          content: '';
+          position: fixed;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          transform: translateX(-50%);
+          box-shadow: 0 0 60px rgba(0,0,0,0.35);
+          width: 100%;
+          max-width: 1760px;
+          max-width: 75%;
+        }
+
+        body {
+            width: 100%;
+            z-index: -55;
+        }
+
+    </style>
+
+        {% block content_top_image_mini %}
+        {% endblock %}
+
+        <div class="container">
+        	<div class="row pt-5 pb-5 main-blue">
+        		<div class="col-md-4">
+                    {% if content is not null %}
+                        {{ content.content1 }}
+                    {% endif %}
+        		</div>
+        		<div class="col-md-4">
+                    {% if content is not null %}
+                        {{ content.content2 }}
+                    {% endif %}
+        		</div>
+        		<div class="col-md-4">
+                    {% if content is not null %}
+                        {{ content.content3 }}
+                    {% endif %}
+        		</div>
+        	</div>
+        </div>
+
+        <div class="container-fluid" style="background: #b50938;">
+        	<div class="row pb-5 pt-5">
+        		<div class="container">
+        			<div class="row">
+                <div class="col-md-12">
+                  <div class="text-align white p-4">
+                    <h2>
+                      <span class="">NOS ETABLISSEMENTS LES </span>
+                      <span class="bold" class="bold">MIEUX NOTES</span>            
+                    </h2>
+                    <div style="margin: 0 auto; color: white" class="divider-white mt-3" ></div>
+                  </div>
+                </div>
+
+	                {% for establishment in establishments %}
+						<div class="col-md-4 p-3">
+		        			<div class="bg-white mt-4 border-radius-5">
+		        				<div class="p-2"><span>Paris</span></div>
+		        				<div>
+		        					<img src="img/maison.jpg" width="100%">
+		        				</div>
+		        				<div class="pl-3 pt-2">
+		        					<span>{{ establishment.name }}</span>
+		        				</div>
+								<div class="activities pt-2 pl-3">
+									<i class="fas fa-utensils orange icon-activity icon-activity-padding"></i>
+									<i class="fas fa-wifi orange icon-activity"></i>
+									<i class="fas fa-dog orange icon-activity"></i>
+									<i class="fas fa-cut orange icon-activity"></i>
+								</div>
+								<div class="ml-3 mt-4 pb-3">
+									<div class="row">
+										<div class="col-md-2" {% if establishment.notation != 10 %} style="margin-right: -15px !important;" {% endif %}>
+					 						<span class="badge bg-main-blue white badge-style-and-size">
+					 							<span>{{ establishment.notation }}</span>
+											</span>											
+										</div>
+										<div class="col-md-8 mt--6 data-appart-responsive">
+											<div class="ml-on-responsive">
+												<div class="main-blue">Exceptionnel</div>
+												<div class="grey">10 avis</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+	        			</div>
+	                {% endfor %}
+
+        			</div>
+        		</div>
+        	</div>
+        </div>
+
+        <div class="container-fluid" style="background: rgb(245,245,245)">
+        	<div class="row pb-5 pt-5">
+        		<div class="container">
+
+              <div class="col-md-12">
+                <div class="text-align p-4">
+                  <h2 style="color: #b50938;">
+                    <span class="">CE QU'ILS PENSENT DE </span>
+                    <span class="bold">NOTRE SERVICE</span>            
+                  </h2>
+                  <div style="margin: 0 auto;" class="divider-spe mt-3 pb-4"></div>
+                </div>
+              </div>
+
+                <div class="row pb-5">
+                    {% for note in notes %}
+                        <div class="col-md-4 p-3">
+                            <div class="bg-white p-3 mt-4">
+                                <div class="note-stars text-align pt-1 pb-3">
+                                    <div class="pb-3">
+                                        <span>{{ note.name }} </span><br>
+                                        <span>{{ note.place }}</span>
+                                    </div>
+                                    <div class="mb-3">
+                                        <img style="border-radius: 50%;" src="img/blonde.jpg">
+                                    </div>
+
+                                    {% for i in 1..note.notation %}
+                                        <i class="fas fa-star orange" style="font-size: 18px;"></i>
+                                    {% endfor %}
+
+                                </div>
+                                <div>
+                                    {{ note.commentary }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+		</div>
+        <div class="container-fluid" style="background: #b50938;">
+        	<div class="row pb-5 pt-5">
+        		<div class="container">
+        			<div class="row">
+		                <div class="col-md-2" style="margin: 0 auto; text-align: center; color: white;">
+		                	<h1>{{ countEstablishment }}</h1>
+		                	<span>Etablissements</span>
+		                </div>
+		                <div class="col-md-2" style="margin: 0 auto; text-align: center; color: white;">
+		                	<h1>{{ countCandidacy }}</h1>
+		                	<span>Candidatures</span>
+		                </div>
+		                <div class="col-md-2" style="margin: 0 auto; text-align: center; color: white;">
+		                	<h1>{{ countNotes }}</h1>
+		                	<span>Avis déposés</span>
+		                </div>
+	    	        </div>
+    	    	</div>
+    		</div>
+		</div>
+
+        <div class="container-fluid">
+        	<div class="row pb-5 pt-5">
+        		<div class="container">
+              <div class="col-md-12">
+                <div class="text-align p-4">
+                  <h2 style="color: #b50938;">
+                    <span class="">TROUVER UN ETABLISSEMENT PAR REGION</span>
+                    <span class="bold">NOTRE SERVICE</span>            
+                  </h2>
+                  <div style="margin: 0 auto;" class="divider-spe mt-3 pb-4"></div>
+                </div>
+              </div>
+        			<div class="row" id="content-etablissement-country">
+                        <div class="col-md-5 col-sm-5 col-5">
+                            <img src="img/carte.png" width="100%">
+                        </div>
+        				<div class="col-md-3 col-sm-3 col-3 text-align">
+                            <span>
+                                <a class="black" href="{{ path('search') }}?place=Ile-de-france">Ile-de-france</a>
+                            </span><br>
+        					<span>Lyon</span><br>
+        					<span>Marseille</span><br>
+        					<span>Amsterdam</span><br>
+        					<span>Venise</span><br>
+        					<span>Bruxelles</span><br>
+        					<span>Deauville</span><br>
+        					<span>Montpellier</span><br>
+        					<span>Cannes</span><br>
+        					<span>Lisbonne</span><br>
+        					<span>Salou</span><br>
+        					<span>Dubai</span><br>
+        					<span>Strasbourg</span>
+        				</div>
+        				<div class="col-md-3 col-sm-3 col-3 text-align">
+        					<span>Lyon</span><br>
+        					<span>Marseille</span><br>
+        					<span>Amsterdam</span><br>
+        					<span>Venise</span><br>
+        					<span>Bruxelles</span><br>
+        					<span>Deauville</span><br>
+        					<span>Montpellier</span><br>
+        					<span>Cannes</span><br>
+        					<span>Lisbonne</span><br>
+        					<span>Salou</span><br>
+        					<span>Dubai</span><br>
+        					<span>Strasbourg</span>	
+        				</div>
+        			</div>
+        		</div>
+        	</div>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+
+    .black {
+        color: black;
+    }
+
+    .black:hover {
+        color: black;
+        text-decoration: none; 
+    }
+
+	.background-image {
+		background-image: url('img/vincent.jpg');
+		padding-top: 75px;
+		padding-bottom: 250px;
+		background-position: center;
+	}
+
+	.background-title {
+		color: white;
+		font-size: 40px;
+		font-weight: bold;
+		text-align: center;
+		margin: 0 auto;
+		margin-bottom: 0px;
+		margin-bottom: 100px;
+	}
+
+	.bg-light-blue {
+		background: #00017d1a;
+	}
+
+	.border-radius-5 {
+		border-radius: 5px;
+	}
+
+	.mt--6 {
+		margin-top: -6px;
+	}
+
+	.bg-little-orange {
+		background: #ff450033;
+	}
+
+	.margin-auto {
+		margin: 0 auto;
+	}
+
+	.text-align {
+		text-align: center;
+	}
+
+    @media screen and (max-width: 1600px) {
+        body::before {
+          max-width: 80%;
+        }
+    }
+
+    @media screen and (max-width: 1500px) {
+        body::before {
+          max-width: 95%;
+        }
+    }
+
+	@media screen and (max-width: 1400px) {
+		.background-image {
+			padding-top: 50px;
+			padding-bottom: 140px;
+		}
+	}
+
+	@media screen and (max-width: 1199px) {
+		.ml-on-responsive {
+			margin-left: 10px;
+		}
+	}
+
+	@media screen and (max-width: 991px) {
+		.ml-on-responsive {
+			margin-left: 20px;
+		}
+	}
+
+	@media screen and (max-width: 767px) {
+		.information-number {
+			margin: 0 auto;
+		}
+
+		.information-number div {
+			margin-bottom: 20px;
+		}
+
+		.data-appart-responsive {
+			position: absolute;
+			margin-left: 40px;
+		}
+
+		#content-etablissement-country div:nth-child(3), #content-etablissement-country div:nth-child(4) {
+			margin-top: 30px;
+		}
+	}
+
+	@media screen and (max-width: 575px) {
+		.main-blue h2 {
+			text-align: center;
+		}
+
+		.divider-blue {
+			margin: 0 auto;
+		}
+	}
+
+	@media screen and (max-width: 325px) {
+		.divider-blue {
+			width: 200px;
+		}
+	}
+
+</style>
+
+{% endblock %}

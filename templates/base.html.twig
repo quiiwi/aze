@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/custom.css') }}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/inscription.css') }}">
+            <link rel="stylesheet" type="text/css" href="{{ asset('css/top-content.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+
+        <div id="search-main" class="container-fluid">
+            <div class="row">
+                <div id="search-main" class="container">
+                    <div class="row p-4">
+                        <div class="col-md-6">
+                            <a href="{{ path('index') }}">
+                                <img src="{{ asset('img/logo-new.png') }}" width="100px">
+                            </a>
+                        </div>
+                        <div class="col-md-6" style="text-align: right; margin-top: 15px;">
+                            {% if app.user != null %}
+                                <a href="{{ path('profile') }}" class="btn btn-primary" style="border-radius: 0; background: #b50938; border-color: #b50938;">
+                                Mon espace
+                                </a>
+
+                                <a href="{{ path('logout') }}" class="btn btn-primary" style="border-radius: 0; background: #b50938; border-color: #b50938;">
+                                    Déconnexion
+                                </a>
+                            {% else %}
+                            {#
+                                <a href="{{ path('establishement_create') }}" class="btn btn-primary" style="border-radius: 0; background: #b50938; border-color: #b50938;">
+                                Vous avez un logement ?
+                                </a>
+                            #}
+                                <a href="{{ path('login') }}" class="btn btn-primary" style="border-radius: 0; background: #b50938; border-color: #b50938;">
+                                  Connexion
+                                </a>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block content_top_image_mini %}
+        <form action="{{ path('search') }}">
+            <div id="search-main" class="container-fluid background-image-mini">
+                <div class="row p-5">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="background-title">
+                            La solution logement pour votre retraite
+                            </h1>
+                            <span class="col-md-5 col-sm-5 pos">
+                                <input type="text" class="full full-left pl-5" placeholder="Services, établissement, spécialité" name="name">
+                                <i class="fas fa-search fa-icon"></i>
+                            </span>
+                            <span class="col-md-5 col-sm-5 responsive-btn pos">
+                                <input type="text" class="full pl-5" placeholder="Ou ?" name="place">
+                                <i class="fas fa-map-marker-alt fa-icon"></i>
+                            </span>
+                            <span class="col-md-2 col-sm-2 pos responsive-btn">
+                                <button class="full full-right btn bg-orange white responsive-btn">
+                                    RECHERCHER
+                                    <i class="fas fa-angle-right full-right-arrow"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endblock %}
+
+        {% block content_top_image %}
+        <form action="{{ path('search') }}">
+            <div id="search-main" class="container-fluid background-image">
+                <div class="row p-5">
+                    <div class="container">
+                        <div class="row">
+                            <h1 class="background-title">
+                            La solution logement pour votre retraite
+                            </h1>
+                                <span class="col-md-5 col-sm-5 pos">
+                                    <input type="text" class="full full-left pl-5" placeholder="Services, établissement, spécialité" name="name">
+                                    <i class="fas fa-search fa-icon"></i>
+                                </span>
+                                <span class="col-md-5 col-sm-5 responsive-btn pos">
+                                    <input type="text" class="full pl-5" name="place" placeholder="Ou ?">
+                                    <i class="fas fa-map-marker-alt fa-icon"></i>
+                                </span>
+                                <span class="col-md-2 col-sm-2 pos responsive-btn">
+                                    <button class="full full-right btn bg-orange white responsive-btn">
+                                        RECHERCHER
+                                        <i class="fas fa-angle-right full-right-arrow"></i>
+                                    </button>
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endblock %}
+
+        <div class="container-fluid" style="background: #b50938;">
+        <div class="container">
+              <div class="bloc-navigation">
+                <div class="row" style="padding-top: 20px;padding-bottom: 20px;">
+                  <div class="col-md-3 text-align">
+                    <span style="color: white">Découvrir OPASenior</span>
+                  </div>
+                  <div class="col-md-2 text-align">
+                    <span style="color: white">Choisir un logement</span>
+                  </div>
+                  <div class="col-md-3 text-align">
+                    <span style="color: white">Combien coûte mon hébergement</span>
+                  </div>
+                  <div class="col-md-2 text-align">
+                    <span style="color: white">Santé et séniors</span>
+                  </div>
+                  <div class="col-md-2 text-align">
+                    <span style="color: white">Vos droits</span>
+                  </div>
+                </div>
+              </div>
+        </div>
+        </div>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+            <script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+        {% endblock %}
+
+        <div class="container-fluid" style="background: rgb(150,150,150);">
+            <div class="row pb-5 pt-5">
+                <div class="container">
+                    <div class="row white">
+                        <div class="col-md-6">
+                            <h1>Opasenior</h1>
+                            <div>
+                                <span>1 mail gay lussac 95015 Cergy Cedex</span><br />
+                                <span>Société anonyme (SA) Capitale 10 000 euros</span><br />
+                                <span>RCS 01234 35363 6358</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Réseaux sociaux</h4>
+                            <div>
+                                <span>Facebook</span><br>
+                                <span>Tweeter</span>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Réseaux sociaux</h4>
+                            <div>
+                                <span>CGU</span><br>
+                                <span>CGV</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

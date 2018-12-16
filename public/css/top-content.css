@@ -1,0 +1,113 @@
+.background-image-mini {
+    background-image: url('../img/vincent.jpg');
+    padding-top: 30px;
+    padding-bottom: 100px;
+    background-position: center;
+}
+
+.background-image {
+    background-image: url('../img/vincent.jpg');
+    padding-top: 75px;
+    padding-bottom: 250px;
+    background-position: center;
+}
+
+.background-title {
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    margin-bottom: 100px;
+}
+
+.bg-light-blue {
+    background: #00017d1a;
+}
+
+.border-radius-5 {
+    border-radius: 5px;
+}
+
+.mt--6 {
+    margin-top: -6px;
+}
+
+.bg-little-orange {
+    background: #ff450033;
+}
+
+.margin-auto {
+    margin: 0 auto;
+}
+
+.text-align {
+    text-align: center;
+}
+
+@media screen and (max-width: 1600px) {
+    body::before {
+      max-width: 80%;
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    body::before {
+      max-width: 95%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .background-image {
+        padding-top: 50px;
+        padding-bottom: 140px;
+    }
+}
+
+@media screen and (max-width: 1199px) {
+    .ml-on-responsive {
+        margin-left: 10px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .ml-on-responsive {
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .information-number {
+        margin: 0 auto;
+    }
+
+    .information-number div {
+        margin-bottom: 20px;
+    }
+
+    .data-appart-responsive {
+        position: absolute;
+        margin-left: 40px;
+    }
+
+    #content-etablissement-country div:nth-child(3), #content-etablissement-country div:nth-child(4) {
+        margin-top: 30px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .main-blue h2 {
+        text-align: center;
+    }
+
+    .divider-blue {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .divider-blue {
+        width: 200px;
+    }
+}

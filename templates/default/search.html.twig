@@ -1,0 +1,309 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% block content_top_image %}
+{% endblock %}
+
+<div class="container-fluid bg-white">
+	<div class="row bg-white">
+		<div class="container">
+			<div class="fs-20">
+				<div class="mt-2 pb-3 grey" id="filter">
+					<span>
+						<i class="fas fa-sliders-h"></i>
+					</span>
+					<span>Filtrer</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="filterAppart" class="container-fluid bg-white" style="display:none;border-bottom: 2px solid orangered;">
+	<div class="row bg-white">
+		<div class="container">
+			<form action="{{ path('search') }}">
+				<div class="fs-20">
+					<div class="mt-2 pb-3 grey">
+						<div class="row">
+							<div class="col-md-3">
+								<p class="black bold">Distance</p>
+								<div>
+									<input type="range" name="">
+								</div>
+							</div>
+							<div class="col-md-3">
+								<p class="black bold">Services</p>
+								<div>
+								<select class="form-control input" name="service">
+									<option value=""></option>
+	  								{% for s in services %}
+		  								<option value="{{ s }}">{{s}}</option>
+	  								{% endfor %}
+								</select>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<p class="black bold">Types d'établissements</p>
+							<!--
+								<div>
+									<span class="badge badge-success p-2">EHPAD</span></span>
+									<span class="badge badge-danger p-2">PRIVE</span></span>
+								</div>
+							-->
+							<select class="form-control input" name="type">
+								<option value=""></option>
+								<option value="EHPAD">EHPAD</option>
+								<option value="PRIVE">PRIVE</option>
+							</select>
+							<input type="hidden" name="name" value="{{ name }}">
+							<input type="hidden" name="place" value="{{ place }}">
+							</div>
+							<div class="col-md-3">
+								<p class="black bold">N° GIR</p>
+								<div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">1</div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">2</div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">3</div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">4</div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">5</div>
+									<div style="display: inline-block;border: 1px solid grey;color: grey; padding: 5px; padding-left: 10px;padding-right: 10px;">6</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-5 pb-3">
+							<div style="margin: 0 auto;">
+								<input type="submit" class="btn btn-primary" value="Lancer la recherche">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid bg-grey pb-4">
+	<div class="row">
+		<div class="container">
+			<div>
+			 	<div class="main-blue mt-4">
+			 		<span class="h1">300 ETABLISSEMENTS</span>
+			 		<span class="h1 bold">TROUVES</span>
+			 	</div>
+			 	<div class="divider-blue mt-3"></div>
+			 	<div class="row mt-3">
+			 		<div class="col-md-1">
+						<table style="height: 100%; width: 100%;">
+							<tr>
+								<td class="text-align">
+									<input type="checkbox" name="" class="main-checkbox">
+								</td>
+							</tr>
+						</table>
+			 		</div>
+			 		<div class="col-md-11">
+			 			<span><b>Sélectionner l'ensemble des établissements</b></span>
+			 		</div>
+			 	</div>
+		 	</div>
+		 		<div class="row">
+					{% for e in establishments %}
+						<div class="col-md-1">
+							<table style="height: 100%; width: 100%;">
+								<tr>
+									<td class="text-align">
+										<input type="checkbox" value="{{ e.id }}" class="sub-checkbox">
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="col-md-11 mt-4">
+
+							{# BLOCK ETABLISHEMENT #}
+
+							<div id="profile" class="pb-3 ">
+								<div class="candidature">
+
+									<div class="card original-shadow">
+										<div class="row p-3">
+											<div class="pr-3 inline-block"><img src="https://via.placeholder.com/250x200"></div>
+											<div class="inline-block">
+
+												<div class="note">
+													<div class="row">
+														<div class="">
+								 						<span class="badge bg-main-blue white badge-style-and-size">
+								 							<span>9,5</span>
+															</span>
+														</div>
+														<div class="pl-2 fs-12">
+															<div class="main-blue">Exceptionnel</div>
+															<div class="grey">10 avis</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="name fs-20">
+													<span>{{ e.name }}</span>
+												</div>
+												<div class="place fs-20">
+													<span class="main-blue">Paris</span>
+												</div>
+												<div class="note-stars">
+													<i class="fas fa-star orange"></i>
+													<i class="fas fa-star orange"></i>
+													<i class="fas fa-star orange"></i>
+													<i class="fas fa-star orange"></i>
+													<i class="fas fa-star orange"></i>
+												</div>
+												<div class="type">
+													<span class="grey">
+														Type d'établissement : 
+													</span>
+													<span>
+													<span class="badge badge-success p-2">EHPAD</span>
+													</span>
+												</div>
+												<div class="price">
+													<span>A partir de 1800 euros</span>
+												</div>
+												<div class="activities mt-4">
+													<i class="fas fa-utensils orange icon-activity icon-activity-padding"></i>
+													<i class="fas fa-wifi orange icon-activity"></i>
+													<i class="fas fa-dog orange icon-activity"></i>
+													<i class="fas fa-cut orange icon-activity"></i>
+												</div>
+												<div class="look-card right-10">
+													<button class="btn bg-orange white">En savoir plus</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							{# ENDBLOCK ETABLISHEMENT #}
+
+						</div>
+					{% endfor %}
+		 		</div>
+		 		<div class="row pt-4 pb-4">
+		 			<div class="col-md-1"></div>
+		 			<div class="col-md-11 text-align">
+
+		 				<div class="block-send-candidacy" style="display:none;">
+			 				<a href="{{ path('candidacy_send') }}" class="btn btn-success">Envoyer les candidatures</a>
+		 				</div>
+
+			 			<div class="mt-3" style="margin: 0 auto; display: none;" id="candidature_success_content">
+			 				<span style="color: green;">Vos candidatures ont bien été envoyées aux établissements !</span>
+			 			</div>
+
+		 			</div>
+		 		</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row bg-white">
+		<div class="container">
+			<div class="mt-3 pb-3 align-center fs-20">
+				<span class="grey mr-3">Pages précèdentes</span>
+				<span class="main-blue">1</span>
+				<span class="main-blue">2</span>
+				<span class="main-blue">3</span>
+				<span class="main-blue">4</span>
+				<span class="main-blue">5</span>
+				<span class="main-blue">6</span>
+				<span class="main-blue">7</span>
+				<span class="main-blue">8</span>
+				<span class="main-blue">9</span>
+				<span>. . .</span>
+				<span class="main-blue">40</span>
+				<span class="ml-3 grey">Pages suivantes</span>
+			</div>
+		</div>
+		<span class="grey" style="position:absolute; right: 20px; margin-top:10px;font-size: 20px;">
+		</span>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<style type="text/css">
+	#filter:hover {
+		cursor: pointer;
+	}
+</style>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		function getNumberOfCurrentCheckboxSelect() {
+			var num = $(".sub-checkbox:checked").length;
+
+			if(num === 0) {
+				$(".block-send-candidacy").hide();
+			} else {
+				$(".block-send-candidacy").show();
+			}
+
+			return num;
+		}
+
+		getNumberOfCurrentCheckboxSelect();
+
+		$("#filter").click(function() {
+			$("#filterAppart").toggle();
+		});
+
+		$(".main-checkbox").change(function() {
+			if($(this).is(":checked")) {
+				$('.sub-checkbox').prop('checked', true);
+			} else {
+				$('.sub-checkbox').prop('checked', false);
+			}
+
+			getNumberOfCurrentCheckboxSelect();
+		});
+
+		$(".sub-checkbox").change(function() {
+			getNumberOfCurrentCheckboxSelect();
+		});
+
+		$(".block-send-candidacy").click(function() {
+
+			var datas = $(".sub-checkbox:checked");
+			var values = [];
+
+			datas.each(function() {
+				values.push($(this).val());
+			});
+
+			$.ajax({
+				method: 'POST',
+				url: '/candidacy/send',
+				data: {
+					'ids': values
+				}, success: function() {
+					$('.main-checkbox').prop('checked', false);
+					$('.sub-checkbox').prop('checked', false);
+					$(".block-send-candidacy").hide();
+					$("#candidature_success_content").show();
+				}
+			});
+
+			return false;
+		});
+
+	});
+</script>
+
+
+{% endblock %}

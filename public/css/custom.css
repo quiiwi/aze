@@ -1,0 +1,162 @@
+.lh-60 {
+    line-height:60px;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.grey {
+    color: grey;
+}
+
+.black {
+    color: black;
+}
+
+.fs-20 {
+    font-size: 20px
+}
+
+.orange {
+    color: orangered;
+}
+
+.white {
+	color: white;
+}
+
+.bg-white {
+    background: white;
+}
+
+.bg-grey {
+    background: #ededed;
+}
+
+.bg-orange {
+	background: #b50938;
+	border: #b50938;
+}
+
+.main-blue {
+	color: rgb(0, 64, 132);
+}
+
+.bg-main-blue {
+	background: rgb(0, 64, 132);
+}
+
+.btn-facebook {
+    width: 100%;
+    background: #0016bab3;
+    color: white;
+    font-weight: bold;
+}
+
+.logo-width {
+    width: 110px;
+}
+
+.h1 {
+    font-size: 2.5rem;
+}
+
+.divider-spe {
+    border-top: 1px solid #b50938; 
+    width: 300px;
+}
+
+.divider-white {
+    border-top: 1px solid white; 
+    width: 300px;
+}
+
+.divider-blue {
+    border-top: 1px solid rgb(0, 64, 132); 
+    width: 300px;
+}
+
+.divider-orange {
+    border-top: 1px solid orangered; 
+    width: 550px;
+}
+
+.row-less-200 {
+    margin-left: -200px;
+}
+
+.card {
+    padding: 10px;
+}
+
+.right-no-border {
+    text-align: right; 
+    border: none;
+}
+
+.little-card {
+    padding: 10px;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+}
+
+.original-shadow {
+    -webkit-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.15);
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.note {
+    position: absolute; 
+    right: 0; 
+    width: 120px;
+}
+
+.badge-style-and-size {
+    font-size: 25px; 
+    font-weight: 1;
+}
+
+.fs-12 {
+    font-size: 12px;
+}
+
+.icon-activity {
+    border: 1px solid orangered; 
+    font-size: 20px; 
+    padding: 5px;
+}
+
+.icon-activity-padding {
+    padding-bottom: 5px; 
+    padding-left: 10px; 
+    padding-right: 10px;
+}
+
+.look-card {
+    position: absolute; 
+    right: 0; 
+    width: 120px; 
+    margin-top: -35px;
+}
+
+.red {
+    color: red;
+}
+
+.right-10 {
+    margin-right: 10px;
+}

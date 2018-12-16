@@ -1,0 +1,176 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+	{{ parent() }}
+	Connexion
+{% endblock %}
+
+{% block body %}
+
+{% block content_top_image %}
+{% endblock %}
+
+	<div class="container">
+          <div class="col-md-12 mt-5">
+            <div class="text-align p-4">
+              <h2 style="color: #b50938;">
+                <span>INSCRIPTION</span>
+              </h2>
+              <div style="margin: 0 auto; width: 75px;" class="divider-spe mt-3"></div>
+            </div>
+          </div>
+
+		<div class="row mt-5">
+			<div class="col-md-7 col-sm-12">
+
+				{{ form_start(form) }}
+
+					<table id="inscription">
+						<tr>
+							<td>En tant que</td>
+							<td>
+								<span>
+									{{ form_widget(form.role[0]) }}
+									<label>{{ form_label(form.role[0]) }}</label>											
+								</span>
+								<span class="ml-4">
+									{{ form_widget(form.role[1]) }}
+									<label>{{ form_label(form.role[1]) }}</label>											
+								</span>
+								{{ form_errors(form.role) }}
+							</td>
+						</tr>
+						<tr>
+							<td>Vous êtes</td>
+							<td>
+								<span>
+									{{ form_widget(form.gender[0]) }}
+									<label>{{ form_label(form.gender[0]) }}</label>											
+								</span>
+								<span class="ml-4">
+									{{ form_widget(form.gender[1]) }}
+									<label>{{ form_label(form.gender[1]) }}</label>											
+								</span>
+								{{ form_errors(form.gender) }}
+							</td>
+						</tr>
+						<tr>
+							<td>{{ form_label(form.lastname) }}</td>
+							<td>
+								{{ form_widget(form.lastname, { 'attr': {'class': 'form-control input'} }) }}
+								{{ form_errors(form.lastname) }}
+							</td>
+						</tr>
+						<tr>
+							<td>{{ form_label(form.firstname) }}</td>
+							<td>
+								{{ form_widget(form.firstname, { 'attr': {'class': 'form-control input'} }) }}
+								{{ form_errors(form.firstname) }}
+							</td>
+						</tr>
+						<tr>
+							<td>{{ form_label(form.email) }}</td>
+							<td>
+								{{ form_widget(form.email, { 'attr': {'class': 'form-control input'} }) }}
+								{{ form_errors(form.email) }}
+							</td>
+						</tr>
+						<tr id="groupe" style="display:none;">
+							<td>{{ form_label(form.groupe) }}</td>
+							<td>
+								{{ form_widget(form.groupe, { 'attr': {'class': 'form-control input little'} }) }}
+								{{ form_errors(form.groupe) }}
+							</td>
+						</tr>
+						<tr class="lineup-orange">
+							<td class="pb-5 reset-pb-5">{{ form_label(form.phone) }}</td>
+							<td class="pb-5">
+								{{ form_widget(form.phone, { 'attr': {'class': 'form-control input little'} }) }}
+								{{ form_errors(form.phone) }}
+							</td>
+						</tr>
+						<tr>
+							<td class="pt-5 reset-space-pt-5">{{ form_label(form.password.first) }}</td>
+							<td class="pt-5 reset-pt-5">
+								{{ form_widget(form.password.first, { 'attr': {'class': 'form-control input little'} }) }}
+								{{ form_errors(form.password.first) }}
+							</td>
+						</tr>
+						<tr class="lineup-orange">
+							<td class="pb-5 reset-pb-5">{{ form_label(form.password.second) }}</td>
+							<td class="pb-5">
+								{{ form_widget(form.password.second, { 'attr': {'class': 'form-control input little'} }) }}
+								{{ form_errors(form.password.second) }}
+							</td>
+						</tr>
+						<tr>
+							<td class="pt-5 reset-space-pt-5">{{ form_label(form.birthday) }}</td>
+							<td class="pt-5 reset-pt-5">
+								{{ form_widget(form.birthday, { 'attr': {'class': 'form-control input little'} }) }}
+								{{ form_errors(form.birthday) }}
+							</td>
+						</tr>
+					</table>
+					<div class="mt-4">
+						<input type="checkbox" class="iRead">
+						<span class="pl-3">J'ai lu et j'accepte les conditions générales d'utilisation</span>
+					</div>
+					<div class="mt-4">
+						<input type="checkbox" class="iAccept">
+						<span class="pl-3">J'accepte de recevoir les newsletters et offres commerciales de opasenior et ses partenaires</span>
+					</div>
+					<div class="mt-3 red" id="messageChecked" style="display: none;">
+						<span>* Veuillez cocher les deux cases ci-dessus</span>
+					</div>
+
+					<div class="mt-4 mb-4 text-align">
+						<input type="submit" class="btn bg-orange white size-btn-inscription" value="CREER UN COMPTE">
+					</div>
+
+					<div class="mb-5 text-align">
+	                    <span class="text-align">
+    	                    Vous avez <a href="{{ path('login') }}">déjà un compte</a> ?
+        	            </span>
+        	        </div>
+
+				{{ form_rest(form) }}				
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	{{ parent() }}
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("#user_role_0").change(function() {
+				$("#groupe").hide();
+			});
+
+			$("#user_role_1").change(function() {
+				$("#groupe").show();
+			});
+
+			$("form").submit(function() {
+
+				var iRead = $(".iRead:checked").length;
+				var iAccept = $(".iAccept:checked").length;
+				var checkInput = iRead + iAccept;
+
+				if(checkInput !== 2) {
+					$("#messageChecked").show();
+	
+					return false;
+				} else {
+					$("#messageChecked").hide();
+				}
+			});
+		});
+	</script>
+
+{% endblock %}

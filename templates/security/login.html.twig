@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+    Connexion
+{% endblock %}
+
+{% block content_top_image %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-sm-8 mt-5 pb-5" style="margin: 0 auto;">
+                <div class="row" style="text-align: center;">
+                    <form method="post" style="width: 100%">
+                        {% if error %}
+                            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                          <div class="col-md-12">
+                            <div class="text-align p-4">
+                              <h2 style="color: #b50938;">
+                                <span >CONNEXION</span>
+                              </h2>
+                              <div style="margin: 0 auto; width: 75px;" class="divider-spe mt-3 pb-4"></div>
+                            </div>
+                          </div>
+
+
+                        <input type="username" name="username" id="inputEmail" value="{{ last_username }}" class="form-control input" placeholder="Email" required>
+
+                        <input type="password" name="password" id="inputPassword" class="form-control input mt-4" placeholder="Password" required>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                        <button class="btn btn-lg btn-primary mt-5" type="submit" style="border-radius: 0;">
+                            Se connecter
+                        </button>
+                    </form>
+
+                    <span style="margin: 0 auto;" class="mt-4">
+                        Vous n'avez toujours pas <a href="{{ path('register') }}">créer un compte</a> ?
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

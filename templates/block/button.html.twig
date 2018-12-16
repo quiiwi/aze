@@ -1,0 +1,12 @@
+
+{% if no_show is not defined %}
+	<a href="{{ path(name ~ '_show', {'id': entity.id}) }}" class="btn btn-info btn-fill">voir</a>
+{% endif %}
+
+<a href="{{ path(name ~ '_edit', {'id': entity.id}) }}" class="btn btn-warning btn-fill">Modifier</a>
+
+<form class="remove-button" method="post" action="{{ path(name ~ '_delete', {'id': entity.id}) }}" onsubmit="return confirm('Voullez-vous vraiment supprimer cet élément ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ entity.id) }}">
+    <button class="btn btn-danger btn-fill">Supprimer</button>
+</form>

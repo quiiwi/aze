@@ -1,0 +1,58 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gir{% endblock %}
+
+{% block body %}
+    <div class="main-panel">
+
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Voir un gir</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>GIR 1-2</label>
+                                            <div>
+                                                {{ gir.one }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>GIR 3-4</label>
+                                            <div>
+                                                {{ gir.two }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>GIR 5-6</label>
+                                            <div>
+                                                {{ gir.three }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'block/button.html.twig' with {
+                    'name': 'gir',
+                    'entity': gir,
+                    'no_show': 1
+                } %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

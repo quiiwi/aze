@@ -1,0 +1,67 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Ajouter/Modifier un avis{% endblock %}
+
+{% block body %}
+
+<div class="main-panel">
+
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Ajouter/Modifier un avis</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="content">
+                        	{{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.name) }}</label>
+											{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+											{{ form_errors(form.name) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.place) }}</label>
+                                            {{ form_widget(form.place, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.place) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.notation) }}</label>
+                                            {{ form_widget(form.notation, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.notation) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.commentary) }}</label>
+                                            {{ form_widget(form.commentary, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.commentary) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.isVisible) }}</label>
+                                            {{ form_widget(form.isVisible, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.isVisible) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Enregister</button>
+                                <div class="clearfix"></div>
+                                {{ form_rest(form) }}
+                                {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <a href="{{ path('note_index') }}" class="btn btn-warning btn-fill">Retour a la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

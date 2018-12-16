@@ -1,0 +1,108 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Ajouter/Modifier un établissement{% endblock %}
+
+{% block body %}
+
+<div class="main-panel">
+
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Ajouter/Modifier un établissement</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="content">
+                        	{{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.name) }}</label>
+                                            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.name) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.email) }}</label>
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.email) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.type) }}</label>
+                                            {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.type) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.telephon) }}</label>
+                                            {{ form_widget(form.telephon, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.telephon) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.address) }}</label>
+                                            {{ form_widget(form.address, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.address) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.zipCode) }}</label>
+                                            {{ form_widget(form.zipCode, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.zipCode) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.city) }}</label>
+                                            {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.city) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.region) }}</label>
+                                            {{ form_widget(form.region, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.region) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.department) }}</label>
+                                            {{ form_widget(form.department, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.department) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.notation) }}</label>
+                                            {{ form_widget(form.notation, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.notation) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.status) }}</label>
+                                            {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.status) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.groupe) }}</label>
+                                            {{ form_widget(form.groupe, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.groupe) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.gir) }}</label>
+                                            {{ form_widget(form.gir, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.gir) }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-info btn-fill pull-right">Enregister</button>
+                                <div class="clearfix"></div>
+                                {{ form_rest(form) }}
+                                {{ form_end(form) }}
+                        </div>
+                    </div>
+                    <a href="{{ path('establishement_index') }}" class="btn btn-warning btn-fill">Retour a la liste</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

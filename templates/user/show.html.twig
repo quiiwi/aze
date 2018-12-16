@@ -1,0 +1,115 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Utilisateur{% endblock %}
+
+{% block body %}
+    <div class="main-panel">
+
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Voir un utilisateur</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Genre</label>
+                                            <div>
+                                                {% if user.gender == 'man' %}
+                                                    <span>Homme</span>
+                                                {% else %}
+                                                    <span>Femme</span>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>nom</label>
+                                            <div>
+                                                {{ user.lastname }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>prénom</label>
+                                            <div>
+                                                {{ user.firstname }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>email</label>
+                                            <div>
+                                                {{ user.email }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>date de naissance</label>
+                                            <div>
+                                                {{ user.birthday | date('d/m/Y') }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>téléphone</label>
+                                            <div>
+                                                {{ user.phone }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>addresse</label>
+                                            <div>
+                                                {{ user.address }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Code postal</label>
+                                            <div>
+                                                {{ user.zipCode }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ville</label>
+                                            <div>
+                                                {{ user.city }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>région</label>
+                                            <div>
+                                                {{ user.region }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>département</label>
+                                            <div>
+                                                {{ user.department }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>groupe</label>
+                                            <div>
+                                                {{ user.groupe }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% include 'block/button.html.twig' with {
+                    'name': 'admin_user',
+                    'entity': user,
+                    'no_show': 1
+                } %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>{% block title %}{% endblock %}</title>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/light-bootstrap-dashboard.css?v=1.4.0') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/pe-icon-7-stroke.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/admin-personnal.css') }}">
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="blue">
+        <div class="sidebar-wrapper background-sidebar-wrapper">
+            <div class="logo">
+                <a class="simple-text text-align">
+                    ADMINISTRATION
+                </a>
+                <div class="center">
+                    <div class="position-logo">
+                        <img src="{{ asset('img/logo-new.png') }}" width="100px">
+                    </div>
+                </div>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="{{ path('service_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les services</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('gir_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les girs</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('note_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les avis</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('groupe_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les groupes</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('establishement_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les établissements</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('candidacy_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les candidatures</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_user_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les utilisateurs</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('content_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les contenus</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('statistic_index') }}">
+                        <i class="pe-7s-note2"></i>
+                        <p>Les statistiques</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {% block body %}{% endblock %}
+</div>
+
+</body>
+    {% block javascripts %}
+        <script type="text/javascript" src="{{ asset('js/jquery.3.2.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/light-bootstrap-dashboard.js?v=1.4.0') }}"></script>
+        <script type="text/javascript" src="{{ asset('js/filter-form.js')}}"></script>
+    {% endblock %}
+</html>

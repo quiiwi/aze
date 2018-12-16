@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mes documents
+{% endblock %}
+
+{% block content_top_image %}
+{% endblock %}
+
+{% block body %}
+
+	<div class="container pt-4">
+		<div class="row">
+			<p>
+				<h1>Liste des documents</h1>
+			</p>
+		</div>
+	</div>
+
+
+	<div class="container pb-5">
+		<div class="row">
+			<p>
+				{{ form_start(form) }}
+
+					{{ form_row(form.name) }}
+
+					{{ form_row(form.document) }}
+
+					<input type="submit" name="" class="btn btn-primary" value="Enregistrer">
+
+				{{ form_end(form) }}
+			</p>
+		</div>
+		<div class="row">
+			{% if app.user.files|length == 0 %}
+				<p>Aucun document</p>
+			{% else %}
+
+			<table>
+				{% for document in app.user.files %}
+				<tr>
+					<td>
+						<a href="{{ asset('/uploads/documents') }}/{{ document.document }}" target="_bland" rel="noopener">{{ document.name }}</a>
+					</td>
+					<td>
+						<a href="{{ path('user_file_delete', {'filename': document.document}) }}">supprimer le document</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+{% endblock %}
