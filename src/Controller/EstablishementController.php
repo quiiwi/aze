@@ -131,6 +131,11 @@ class EstablishementController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
+            foreach($entity->getServices() as $s) {
+                $entity->addService($s);
+            }
+
             $em->persist($entity);
             $em->flush();
 

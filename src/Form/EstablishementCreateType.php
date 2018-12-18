@@ -59,6 +59,9 @@ class EstablishementCreateType extends AbstractType
             ->add('notation', null, [
                 'label' => 'Note',
             ])
+            ->add('services', null, [
+                'label' => "Services"
+            ])
         ;
     }
 

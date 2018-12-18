@@ -76,6 +76,8 @@
                                         <th>Email</th>
                                         <th>Téléphone</th>
                                         <th>Ville</th>
+                                        <th>Nb etablisement</th>
+                                        <th>Nb candidature</th>
                                         <td>Action</td>
                                     </thead>
                                     <tbody>
@@ -88,6 +90,8 @@
                                                 <td>{{ entity.email }}</td>
                                                 <td>{{ entity.phone }}</td>
                                                 <td>{{ entity.city[:50] }}</td>
+                                                <td>{{ entity.countEstablishement }}</td>
+                                                <td>{{ entity.countCandidacies }}</td>
                                                 <td>
                                                     {% include 'block/button.html.twig' with {
                                                         'name' : 'groupe'

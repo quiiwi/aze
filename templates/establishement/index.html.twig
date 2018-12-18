@@ -75,6 +75,9 @@
                                         <th>Ville</th>
                                         <th>Type</th>
                                         <th>Status</th>
+                                        <th>Accepter</th>
+                                        <th>Refuser</th>
+                                        <th>Nouvelle</th>
                                         <td>Action</td>
                                     </thead>
                                     <tbody>
@@ -87,7 +90,9 @@
                                                 <td>{{ entity.city[:50] }}</td>
                                                 <td>{{ entity.type }}</td>
                                                 <td>{{ entity.status }}</td>
-                                                <td>{{ entity.email }}</td>
+                                                <td>{{ entity.candidacyAccepted }}</td>
+                                                <td>{{ entity.candidacyRefused }}</td>
+                                                <td>{{ entity.candidacyNews }}</td>
                                                 <td>
                                                     {% include 'block/button.html.twig' with {
                                                         'name' : 'establishement'

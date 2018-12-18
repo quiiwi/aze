@@ -53,6 +53,22 @@ class Groupe
         $this->establishement = new ArrayCollection();
     }
 
+    public function getCountEstablishement()
+    {
+        return count($this->establishement);
+    }
+
+    public function getCountCandidacies()
+    {
+        $count = 0;
+
+        foreach($this->establishement as $e) {
+            $count += count($e->getCandidacies());
+        }
+
+        return $count;
+    }
+
     public function getCity()
     {
         return $this->city;

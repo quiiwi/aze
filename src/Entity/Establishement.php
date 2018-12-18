@@ -21,7 +21,7 @@ class Establishement
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Candidacy", mappedBy="candidacy")
+     * @ORM\OneToMany(targetEntity="App\Entity\Candidacy", mappedBy="establishment")
      */
     private $candidacies;
 
@@ -166,6 +166,47 @@ class Establishement
     public function getServices()
     {
         return $this->services;
+    }
+
+    public function getCandidacies()
+    {
+        return $this->candidacies;
+    }
+
+    public function getCandidacyAccepted() {
+        $count = 0;
+
+        foreach($this->candidacies as $c) {
+            if($c->getStatus() === 'Accepté') {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    public function getCandidacyRefused() {
+        $count = 0;
+
+        foreach($this->candidacies as $c) {
+            if($c->getStatus() === 'Refusé') {
+                $count++;
+            }
+        }
+
+        return $count;
+    }
+
+    public function getCandidacyNews() {
+        $count = 0;
+
+        foreach($this->candidacies as $c) {
+            if($c->getStatus() === 'Nouvelle') {
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
     public function addService($service)

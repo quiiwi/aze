@@ -4,6 +4,16 @@
 
 {% block body %}
 
+<script
+              src="https://code.jquery.com/jquery-3.3.1.js"
+              integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+              crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
+
+
+
+
 <div class="main-panel">
 
     <nav class="navbar navbar-default navbar-fixed">
@@ -89,6 +99,11 @@
                                             {{ form_widget(form.gir, {'attr': {'class': 'form-control'}}) }}
                                             {{ form_errors(form.gir) }}
                                         </div>
+                                        <div class="form-group">
+                                            <label>{{ form_label(form.services) }}</label>
+                                            {{ form_widget(form.services, {'attr': {'class': 'form-control'}}) }}
+                                            {{ form_errors(form.services) }}
+                                        </div>
                                     </div>
                                 </div>
 
@@ -105,4 +120,12 @@
     </div>
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        $("#establishement_create_services").select2({
+            tags: true
+        });
+    </script>
 {% endblock %}

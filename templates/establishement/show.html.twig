@@ -100,6 +100,14 @@
                                                 {{ establishement.gir }}
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label>services</label>
+                                            <div>
+                                                {% for service in establishement.services %}
+                                                    {{ dump(service) }}
+                                                {% endfor %}
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
