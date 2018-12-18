@@ -173,6 +173,18 @@ class Establishement
         return $this->candidacies;
     }
 
+    public function getMininalPrice()
+    {
+        // Prix de la chambre, il faut créer un champ ou un objet
+        // Cela depent du besoin
+        // Exemple avec 50 €
+        $priceRoom = 50;
+
+        $number = $this->gir->getThree() + $priceRoom;
+
+        return $number * 3;
+    }
+
     public function getCandidacyAccepted() {
         $count = 0;
 
