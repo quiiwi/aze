@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }}
+    Connexion
+{% endblock %}
+
+{% block content_top_image %}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-8 mt-5 pb-5" style="margin: 0 auto;">
+                <div class="row" style="text-align: center;">
+					<div class="col-md-12">
+						<div class="text-align p-4">
+							<h2 style="color: #b50938;">
+								<span >VOUS AVEZ UN LOGEMENT ?</span>
+							</h2>
+							<div style="margin: 0 auto; width: 100px;" class="divider-spe mt-3 pb-4"></div>
+						</div>
+
+						{{ form_start(form) }}
+		                    <div class="form-group">
+		                        <label>{{ form_label(form.name) }}</label>
+		                        {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+		                        {{ form_errors(form.name) }}
+		                    </div>
+		                    <div class="form-group">
+		                        <label>{{ form_label(form.email) }}</label>
+		                        {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+		                        {{ form_errors(form.email) }}
+		                    </div>
+		                    <div class="form-group">
+		                        <label>{{ form_label(form.type) }}</label>
+		                        {{ form_widget(form.type, {'attr': {'class': 'form-control'}}) }}
+		                        {{ form_errors(form.type) }}
+		                    </div>
+		                    <div class="form-group">
+		                        <label>{{ form_label(form.telephon) }}</label>
+		                        {{ form_widget(form.telephon, {'attr': {'class': 'form-control'}}) }}
+		                        {{ form_errors(form.telephon) }}
+		                    </div>
+		                    <div class="form-group">
+		                        <label>{{ form_label(form.groupe) }}</label>
+		                        {{ form_widget(form.groupe, {'attr': {'class': 'form-control'}}) }}
+		                        {{ form_errors(form.groupe) }}
+		                    </div>
+
+		                    <div class="mt-5">
+		                    	<input type="submit" value="Envoyer" class="btn btn-primary">
+		                    </div>
+
+						{{ form_end(form) }}
+					</div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Form\EstablishementPropositionType;
 use App\Entity\Candidacy;
 use App\Entity\Establishement;
 use App\Entity\Service;
@@ -19,6 +20,30 @@ class DefaultController extends AbstractController
     public function ficheClient()
     {
         return $this->render('client/fiche.html.twig');
+    }
+
+    /**
+     * @Route("/proposition/etablissement", name="establishement_create_proposition")
+     */
+    public function propositionEtablissement(Request $request)
+    {
+        $establishement = new Establishement();
+        $form = $this->createForm(EstablishementPropositionType::class, $establishement);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() and $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $establishement->setStatus('Nouveau');
+            $establishement->setNotation(0);
+            $em->persist($establishement);
+            $em->flush();
+
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('establishement/proposition.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
     
     /**
